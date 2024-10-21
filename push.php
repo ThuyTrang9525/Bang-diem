@@ -4,26 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <!-- Form thêm sản phẩm -->
-    <form action="push.php" method="POST">
-        <h1>Thêm sản phẩm mới</h1>
-        Tên sản phẩm: <input type="text" name="a" required> <br>
-        Giá sản phẩm: <input type="number" name="b" required> <br>
-        <input type="submit" name="submit" value="Submit">
-    </form>
-
-    <h2>Danh sách sản phẩm</h2>
-
-    <?php
-        // Hiển thị danh sách sản phẩm
-        echo "<ul>";
-        foreach ($_SESSION['array'] as $product) {
-            echo "<li>" . $product['name'] . ": " . $product['cost'] . "</li>";
-        }
-        echo "</ul>";
-    ?>
     <?php
         session_start(); // Bắt đầu session
 
@@ -45,6 +25,27 @@
             $_SESSION['array'] = Push($name, $cost, $_SESSION['array']);
         }
     ?>
+</head>
+<body>
+    <!-- Form thêm sản phẩm -->
+    <form action="push.php" method="POST">
+        <h1>Thêm sản phẩm mới</h1>
+        Tên sản phẩm: <input type="text" name="a" required> 
+        Giá sản phẩm: <input type="number" name="b" required>
+        <input type="submit" name="submit" value="Thêm sản phẩm">
+    </form>
+
+    <h2>Danh sách sản phẩm</h2>
+
+    <?php
+        // Hiển thị danh sách sản phẩm
+        echo "<ul>";
+        foreach ($_SESSION['array'] as $product) {
+            echo "<li>" . $product['name'] . " - " . $product['cost'] . ".VND </li>";
+        }
+        echo "</ul>";
+    ?>
+    
 
 
 
